@@ -18,6 +18,10 @@ public enum DayOfWeek {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public static DayOfWeek from(String inputDayOfWeek) {
         for (DayOfWeek dayOfWeek : values()) {
             if (dayOfWeek.name.equals(inputDayOfWeek)) {

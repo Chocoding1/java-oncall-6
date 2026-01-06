@@ -13,6 +13,14 @@ public class OncallInfo {
         this.dayOfWeek = getDayOfWeek(input.get(1));
     }
 
+    public Month getMonth() {
+        return month;
+    }
+
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
+
     private void validateInputSize(List<String> input) {
         if (input.size() != 2) {
             throw new IllegalArgumentException("[ERROR] 월과 시작 요일이 올바른 형식으로 입력되지 않았습니다.");

@@ -6,6 +6,8 @@ import java.util.List;
 import oncall.model.HolidayEmployees;
 import oncall.model.OncallEmployees;
 import oncall.model.OncallInfo;
+import oncall.model.ScheduleGenerator;
+import oncall.model.ScheduledEmployees;
 import oncall.model.WeekdaysEmployees;
 import oncall.util.CommaParser;
 import oncall.view.InputView;
@@ -21,6 +23,8 @@ public class ScheduleController {
     public void run() {
         OncallInfo oncallInfo = retryUntilSuccess(this::getOncallInfo);
         OncallEmployees oncallEmployees = retryUntilSuccess(this::getOncallEmployees);
+        ScheduleGenerator scheduleGenerator = new ScheduleGenerator(oncallInfo, oncallEmployees);
+        ScheduledEmployees scheduledEmployees = scheduleGenerator.generate();
     }
 
     private OncallEmployees getOncallEmployees() {

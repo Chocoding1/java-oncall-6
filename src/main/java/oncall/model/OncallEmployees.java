@@ -16,6 +16,14 @@ public class OncallEmployees {
         this.holidayEmployees = holidayEmployees;
     }
 
+    public WeekdaysEmployees getWeekdaysEmployees() {
+        return weekdaysEmployees;
+    }
+
+    public HolidayEmployees getHolidayEmployees() {
+        return holidayEmployees;
+    }
+
     private void validateEmployeesCount(WeekdaysEmployees weekdaysEmployees, HolidayEmployees holidayEmployees) {
         Set<Employee> uniqueEmployees = Stream.of(weekdaysEmployees.getEmployees(), holidayEmployees.getEmployees())
                 .flatMap(List::stream)

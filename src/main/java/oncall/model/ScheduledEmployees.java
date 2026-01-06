@@ -1,0 +1,22 @@
+package oncall.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ScheduledEmployees {
+
+    private final List<Employee> employees;
+
+    public ScheduledEmployees() {
+        this.employees = new ArrayList<>();
+    }
+
+    public void assignEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
+    public boolean isAssignable(Employee employee) {
+        int lastIndex = employees.size() - 1;
+        return employees.get(lastIndex) != employee;
+    }
+}

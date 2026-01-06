@@ -1,35 +1,37 @@
 package oncall.model;
 
-import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
-public class HolidayEmployees {
+public class HolidayEmployees extends Employees{
 
-    private final List<Employee> employees;
+    private int currentEmployeeIdx = 0;
+    private final Queue<Employee> changedEmployees;
 
     public HolidayEmployees(List<String> nicknames) {
-        List<Employee> employees = nicknames.stream()
-                .map(Employee::new)
-                .toList();
-        validateDuplicateEmployee(employees);
-        validateEmployeeCount(employees);
-        this.employees = employees;
+        super(nicknames);
+        this.changedEmployees = new LinkedList<>();
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    private void validateDuplicateEmployee(List<Employee> employees) {
-        HashSet<Employee> uniqueEmployees = new HashSet<>(employees);
-        if (uniqueEmployees.size() != employees.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복 근무자가 존재합니다.");
+    @Override
+    public Employee nextEmployee(ScheduledEmployees scheduledEmployees) {
+        Employee employee;
+        if (changedEmployees.isEmpty()) {
+            employee = currentEmployee(currentEmployeeIdx);
+            if (scheduledEmployees.isAssignable(employee)) {
+                currentEmployeeIdx++;
+                return employee;
+            }
+            changedEmployees.offer(employee);
+            currentEmployeeIdx++;
+            return currentEmployee(currentEmployeeIdx++);
         }
-    }
 
-    private void validateEmployeeCount(List<Employee> employees) {
-        if (employees.size() < 2) {
-            throw new IllegalArgumentException("[ERROR] 비상 근무자는 2명 이상이어야 합니다.");
+        employee = changedEmployees.peek();
+        if (scheduledEmployees.isAssignable(employee)) {
+            return changedEmployees.poll();
         }
+        return currentEmployee(currentEmployeeIdx++);
     }
 }
