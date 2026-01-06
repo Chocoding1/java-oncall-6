@@ -4,7 +4,7 @@ import java.util.List;
 
 public class OncallInfo {
 
-    private final int month;
+    private final Month month;
     private final DayOfWeek dayOfWeek;
 
     public OncallInfo(List<String> input) {
@@ -19,19 +19,15 @@ public class OncallInfo {
         }
     }
 
-    private int getValidatedMonth(String inputMonth) {
-        int month;
+    private Month getValidatedMonth(String inputMonth) {
+        int monthOfYear;
         try {
-            month = Integer.parseInt(inputMonth);
+            monthOfYear = Integer.parseInt(inputMonth);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 월은 숫자로 입력해 주세요.");
         }
 
-        if (month < 1 || 12 < month) {
-            throw new IllegalArgumentException("[ERROR] 월은 1부터 12 사이의 숫자로 입력해 주세요.");
-        }
-
-        return month;
+        return Month.from(monthOfYear);
     }
 
     private DayOfWeek getDayOfWeek(String inputDayOfWeek) {
