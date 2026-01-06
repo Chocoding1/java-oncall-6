@@ -3,6 +3,7 @@ package oncall.controller;
 import static oncall.exception.ExceptionHandler.*;
 
 import java.util.List;
+import oncall.model.HolidayEmployees;
 import oncall.model.OncallInfo;
 import oncall.model.WeekdaysEmployees;
 import oncall.util.CommaParser;
@@ -19,6 +20,7 @@ public class ScheduleController {
     public void run() {
         OncallInfo oncallInfo = retryUntilSuccess(this::getOncallInfo);
         WeekdaysEmployees weekdaysEmployees = getWeekdaysOncallEmployees();
+        HolidayEmployees holidayEmployees = getHolidayOncallEmployees();
     }
 
     private OncallInfo getOncallInfo() {
@@ -31,5 +33,11 @@ public class ScheduleController {
         String input = inputView.readWeekdaysOncallNicknames();
         List<String> nicknames = CommaParser.parse(input);
         return new WeekdaysEmployees(nicknames);
+    }
+
+    private HolidayEmployees getHolidayOncallEmployees() {
+        String input = inputView.readHolidayOncallNicknames();
+        List<String> nicknames = CommaParser.parse(input);
+        return new HolidayEmployees(nicknames);
     }
 }
