@@ -16,7 +16,11 @@ public class ScheduledEmployees {
     }
 
     public boolean isAssignable(Employee employee) {
+        if (employees.isEmpty()) {
+            return true;
+        }
+
         int lastIndex = employees.size() - 1;
-        return employees.get(lastIndex) != employee;
+        return !employees.get(lastIndex).equals(employee);
     }
 }

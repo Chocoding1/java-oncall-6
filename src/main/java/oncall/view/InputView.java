@@ -14,12 +14,12 @@ public class InputView {
     }
 
     public String readWeekdaysOncallNicknames() {
-        System.out.println(READ_WEEKDAYS_ONCALL_EMPLOYEES_NOTICE);
+        System.out.print(READ_WEEKDAYS_ONCALL_EMPLOYEES_NOTICE);
         return Console.readLine();
     }
 
     public String readHolidayOncallNicknames() {
-        System.out.println(READ_HOLIDAY_ONCALL_EMPLOYEES_NOTICE);
+        System.out.print(READ_HOLIDAY_ONCALL_EMPLOYEES_NOTICE);
         return Console.readLine();
     }
 }

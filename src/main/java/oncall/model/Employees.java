@@ -24,6 +24,10 @@ public abstract class Employees {
         return employees.get(index);
     }
 
+    public int employeesCount() {
+        return employees.size();
+    }
+
     public abstract Employee nextEmployee(ScheduledEmployees scheduledEmployees);
 
     private void validateDuplicateEmployee(List<Employee> employees) {

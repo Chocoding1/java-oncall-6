@@ -17,6 +17,7 @@ public class WeekdaysEmployees extends Employees{
     @Override
     public Employee nextEmployee(ScheduledEmployees scheduledEmployees) {
         Employee employee;
+        currentEmployeeIdx %= employeesCount();
         if (changedEmployees.isEmpty()) {
             employee = currentEmployee(currentEmployeeIdx);
             if (scheduledEmployees.isAssignable(employee)) {

@@ -12,10 +12,8 @@ public class ScheduleGenerator {
 
     public ScheduledEmployees generate() {
         Month month = oncallInfo.getMonth();
-        int date = 1;
-        int dayOfWeekId = getStartDayOfWeek();
         ScheduledEmployees scheduledEmployees = new ScheduledEmployees();
-        for (int i = 0; i < month.getDaysOfMonth(); i++) {
+        for (int date = 1, dayOfWeekId = getStartDayOfWeek(); date <= month.getDaysOfMonth(); date++, dayOfWeekId++) {
             dayOfWeekId %= 7;
             Employees employees = getEmployees(month, date, dayOfWeekId);
             assignEmployee(scheduledEmployees, employees);
