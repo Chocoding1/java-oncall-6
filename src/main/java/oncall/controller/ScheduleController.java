@@ -3,8 +3,8 @@ package oncall.controller;
 import static oncall.exception.ExceptionHandler.*;
 
 import java.util.List;
-import oncall.exception.ExceptionHandler;
 import oncall.model.OncallInfo;
+import oncall.model.WeekdaysEmployees;
 import oncall.util.CommaParser;
 import oncall.view.InputView;
 
@@ -18,11 +18,18 @@ public class ScheduleController {
 
     public void run() {
         OncallInfo oncallInfo = retryUntilSuccess(this::getOncallInfo);
+        WeekdaysEmployees weekdaysEmployees = getWeekdaysOncallEmployees();
     }
 
     private OncallInfo getOncallInfo() {
         String input = inputView.readOncallInfo();
         List<String> oncallInfo = CommaParser.parse(input);
         return new OncallInfo(oncallInfo);
+    }
+
+    private WeekdaysEmployees getWeekdaysOncallEmployees() {
+        String input = inputView.readWeekdaysOncallNicknames();
+        List<String> nicknames = CommaParser.parse(input);
+        return new WeekdaysEmployees(nicknames);
     }
 }
