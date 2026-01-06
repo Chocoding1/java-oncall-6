@@ -16,6 +16,10 @@ public class WeekdaysEmployees {
         this.employees = employees;
     }
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
     private void validateDuplicateEmployee(List<Employee> employees) {
         HashSet<Employee> uniqueEmployees = new HashSet<>(employees);
         if (uniqueEmployees.size() != employees.size()) {
