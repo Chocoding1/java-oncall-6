@@ -23,6 +23,10 @@ public enum Month {
         this.daysOfMonth = daysOfMonth;
     }
 
+    public int getMonthOfYear() {
+        return monthOfYear;
+    }
+
     public int getDaysOfMonth() {
         return daysOfMonth;
     }

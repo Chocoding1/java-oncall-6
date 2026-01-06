@@ -18,6 +18,19 @@ public enum DayOfWeek {
         this.id = id;
     }
 
+    public static String getName(int dayOfWeekId) {
+        for (DayOfWeek dayOfWeek : values()) {
+            if (dayOfWeek.id == dayOfWeekId) {
+                return dayOfWeek.name;
+            }
+        }
+        throw new IllegalArgumentException("[ERROR] 존재하지 않는 요일 ID입니다.");
+    }
+
+    public boolean isWeekDays() {
+        return MON.id <= this.id && this.id <= FRI.id;
+    }
+
     public int getId() {
         return id;
     }

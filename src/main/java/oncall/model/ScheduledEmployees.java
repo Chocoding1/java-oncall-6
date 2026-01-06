@@ -1,6 +1,7 @@
 package oncall.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ScheduledEmployees {
@@ -9,6 +10,10 @@ public class ScheduledEmployees {
 
     public ScheduledEmployees() {
         this.employees = new ArrayList<>();
+    }
+
+    public List<Employee> getEmployees() {
+        return Collections.unmodifiableList(employees);
     }
 
     public void assignEmployee(Employee employee) {

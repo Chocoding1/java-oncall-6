@@ -11,20 +11,23 @@ import oncall.model.ScheduledEmployees;
 import oncall.model.WeekdaysEmployees;
 import oncall.util.CommaParser;
 import oncall.view.InputView;
+import oncall.view.OutputView;
 
 public class ScheduleController {
 
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public ScheduleController(InputView inputView) {
+    public ScheduleController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
         OncallInfo oncallInfo = retryUntilSuccess(this::getOncallInfo);
         OncallEmployees oncallEmployees = retryUntilSuccess(this::getOncallEmployees);
-        ScheduleGenerator scheduleGenerator = new ScheduleGenerator(oncallInfo, oncallEmployees);
-        ScheduledEmployees scheduledEmployees = scheduleGenerator.generate();
+        ScheduledEmployees scheduledEmployees = generateSchedule(oncallInfo, oncallEmployees);
+        outputView.printResult(oncallInfo, scheduledEmployees);
     }
 
     private OncallEmployees getOncallEmployees() {
@@ -49,5 +52,10 @@ public class ScheduleController {
         String input = inputView.readHolidayOncallNicknames();
         List<String> nicknames = CommaParser.parse(input);
         return new HolidayEmployees(nicknames);
+    }
+
+    private ScheduledEmployees generateSchedule(OncallInfo oncallInfo, OncallEmployees oncallEmployees) {
+        ScheduleGenerator scheduleGenerator = new ScheduleGenerator(oncallInfo, oncallEmployees);
+        return scheduleGenerator.generate();
     }
 }

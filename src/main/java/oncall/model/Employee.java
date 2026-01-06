@@ -11,6 +11,10 @@ public class Employee {
         this.nickname = nickname;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) {
