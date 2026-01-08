@@ -1,4 +1,4 @@
-package oncall.model;
+package oncall.model.employee;
 
 import java.util.Objects;
 

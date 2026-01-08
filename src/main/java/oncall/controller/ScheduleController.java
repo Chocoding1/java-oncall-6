@@ -3,12 +3,12 @@ package oncall.controller;
 import static oncall.exception.ExceptionHandler.*;
 
 import java.util.List;
-import oncall.model.HolidayEmployees;
-import oncall.model.OncallEmployees;
+import oncall.model.employee.HolidayEmployees;
+import oncall.model.employee.OncallEmployees;
 import oncall.model.OncallInfo;
 import oncall.model.ScheduleGenerator;
-import oncall.model.ScheduledEmployees;
-import oncall.model.WeekdaysEmployees;
+import oncall.model.employee.ScheduledEmployees;
+import oncall.model.employee.WeekdaysEmployees;
 import oncall.util.CommaParser;
 import oncall.view.InputView;
 import oncall.view.OutputView;

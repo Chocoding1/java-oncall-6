@@ -1,15 +1,15 @@
-package oncall.model;
+package oncall.model.employee;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class HolidayEmployees extends Employees{
+public class WeekdaysEmployees extends Employees{
 
     private int currentEmployeeIdx = 0;
     private final Queue<Employee> changedEmployees;
 
-    public HolidayEmployees(List<String> nicknames) {
+    public WeekdaysEmployees(List<String> nicknames) {
         super(nicknames);
         this.changedEmployees = new LinkedList<>();
     }

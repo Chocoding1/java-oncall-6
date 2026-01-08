@@ -1,4 +1,4 @@
-package oncall.model;
+package oncall.model.date;
 
 public enum PublicHoliday {
     NEW_YEAR(Month.JAN, 1),

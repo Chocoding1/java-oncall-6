@@ -1,5 +1,13 @@
 package oncall.model;
 
+import oncall.model.date.DayOfWeek;
+import oncall.model.date.Month;
+import oncall.model.date.PublicHoliday;
+import oncall.model.employee.Employee;
+import oncall.model.employee.Employees;
+import oncall.model.employee.OncallEmployees;
+import oncall.model.employee.ScheduledEmployees;
+
 public class ScheduleGenerator {
 
     private final OncallInfo oncallInfo;

@@ -1,4 +1,4 @@
-package oncall.model;
+package oncall.model.date;
 
 public enum Month {
     JAN(1, 31),
